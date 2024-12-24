@@ -7,4 +7,6 @@ export function middleware(req: NextRequest) {
     "Content-Type, Authorization"
   );
   req.headers.set("Access-Control-Allow-Origin", "*");
+
+  return req;
 }
