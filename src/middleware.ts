@@ -8,7 +8,7 @@ const corsOptions = {
 export function middleware(req: NextRequest) {
   if (req.method === "OPTIONS") {
     const preflightHeaders = {
-      "Access-Control-Allow-Origin": "https://testmyapp-theta.vercel.app/",
+      "Access-Control-Allow-Origin": "*",
       ...corsOptions,
     };
     return NextResponse.json({}, { headers: preflightHeaders });
@@ -16,10 +16,7 @@ export function middleware(req: NextRequest) {
 
   const response = NextResponse.next();
 
-  response.headers.set(
-    "Access-Control-Allow-Origin",
-    "https://testmyapp-theta.vercel.app/"
-  );
+  response.headers.set("Access-Control-Allow-Origin", "*");
 
   Object.entries(corsOptions).forEach(([key, value]) => {
     response.headers.set(key, value);
